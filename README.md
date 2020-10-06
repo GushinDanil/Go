@@ -53,6 +53,55 @@
 В дальнейших операциях использовать
 его в параметре Authorization(Bearer Token)
 
+Таблицы из базы данных:
 
 
+    create table users
 
+    (
+
+    id       serial not null
+
+        constraint users_pkey
+
+            primary key,
+
+    nickname text,
+
+    email    text,
+
+    password text
+    );
+
+    alter table users
+
+    owner to postgres;
+
+    create unique index users_email_uindex
+
+    on users (email);
+
+    create unique index users_nickname_uindex
+
+    on users (nickname)
+
+    create table products
+
+    (
+
+     id        serial not null
+
+        constraint products_pkey1
+
+            primary key,
+
+    name      text,
+
+    price     integer,
+
+    user_id   integer,
+
+    createdat time,
+
+    updatedat time
+    );
